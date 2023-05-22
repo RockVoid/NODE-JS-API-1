@@ -9,11 +9,10 @@ router.get('/', (_, res) => {
     return res.json({ result: 'Okay!' });
 });
 
-router.post('/cidades', CidadesController.create);
-
-router.post('/', (_, res) => {
-    console.log('Post Touch baby!!!');
-    return res.json({ result: 'Okay!' });
-});
+router.post(
+    '/cidades', 
+    CidadesController.createValidation,
+    CidadesController.create
+);
 
 export { router };
