@@ -5,9 +5,9 @@ import { StatusCodes } from 'http-status-codes';
 
 type IProperty = 'body' | 'query' | 'params' | 'header';
 
-type TGetSchema = <T>(schema: yup.ObjectSchema<any>) => yup.ObjectSchema<any> 
+type TGetSchema = <T extends yup.Maybe<yup.AnyObject>>(schema: yup.ObjectSchema<T>) => yup.ObjectSchema<any> 
 
-type TAllSchemas = Record<IProperty, yup.ObjectSchema<any>>;
+type TAllSchemas = Record<IProperty, yup.ObjectSchema<any>>; 
 
 type TGetAllSchemas = (getSchema: TGetSchema) => Partial<TAllSchemas>;
 
