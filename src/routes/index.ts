@@ -4,15 +4,10 @@ import { CidadesController } from '../controllers/cidades';
 
 const router = Router();
 
-router.get('/', (_, res) => {
-    console.log('First Touch baby!!!');
-    return res.json({ result: 'Okay!' });
-});
-
-router.post(
-    '/cidades', 
-    CidadesController.createValidation,
-    CidadesController.create
-);
+router.get('/cidades', CidadesController.getAllValidation, CidadesController.getAll);
+router.get('/cidades:id', CidadesController.getByIdValidation, CidadesController.getById);
+router.post('/cidades', CidadesController.createValidation, CidadesController.create);
+router.put('/cidades:id', CidadesController.updateByIdValidation, CidadesController.updateById);
+router.delete('/cidades:id', CidadesController.deleteByIdValidation, CidadesController.deleteById);
 
 export { router };
