@@ -6,7 +6,7 @@ describe('Cidades - GetAll', () => {
         
         const res1 = await testServer
             .post('/cidades')
-            .send({ nome: 'Caxias Do Sul', estado: 'Rio Grande Do Sul' });
+            .send({ nome: 'Caxias Do Sul' });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 

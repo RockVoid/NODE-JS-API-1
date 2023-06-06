@@ -1,7 +1,7 @@
 declare module 'knex/types/table' {
     interface Tables {
-        // cidade: ICidade
-        // pessoa: IPessoa
-        // usuario: IUsuario
+        cidade: ICidade
+        pessoa: IPessoa
+        usuario: IUsuario
     }
 }

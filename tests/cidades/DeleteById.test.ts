@@ -6,12 +6,12 @@ describe('Cidades - DeleteById', () => {
     it('Apaga registro', async () => {
         const res1 = await testServer
             .post('/cidades')
-            .send({ nome: 'Fortaleza', estado: 'Ceara' });
+            .send({ nome: 'Fortaleza' });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
         const resCleaned = await testServer
-            .delete(`/cidades/${res1.body.id}`)
+            .delete(`/cidades/${res1.body}`)
             .send();
 
         expect(resCleaned.statusCode).toEqual(StatusCodes.NO_CONTENT);

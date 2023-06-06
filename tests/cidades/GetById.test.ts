@@ -6,13 +6,12 @@ describe('Cidades - Get By Id', () => {
     it('Busca registro por ID', async () => {
         const res1 = await testServer
             .post('/cidades')
-            .send({ nome: 'Caxias do Sul', estado: 'Rio Grande Do Sul' });
+            .send({ nome: 'Caxias do Sul' });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
-        console.log(res1.body.id);
 
         const res2 = await testServer
-            .get(`/cidades/${res1.body.id}`)
+            .get(`/cidades/${res1.body}`)
             .send();
 
         expect(res2.statusCode).toEqual(StatusCodes.OK);

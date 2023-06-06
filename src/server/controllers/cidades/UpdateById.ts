@@ -2,14 +2,13 @@ import * as yup from 'yup';
 import { validation } from '../../shared/middleware/Validation';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { ICidade } from '../../database/models/Cidade';
 
 interface IParamsProps {
     id?: number 
 } 
 
-interface IBodyProps {
-    nome: string
-}
+interface IBodyProps extends Omit<ICidade, 'id'> {}
 
 export const updateByIdValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({

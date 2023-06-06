@@ -25,6 +25,5 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
     return res.status(StatusCodes.OK).json({
         id: 1,
         nome: 'Caxias do Sul',
-        estado: 'Rio Grande do Sul'
     });
 };
