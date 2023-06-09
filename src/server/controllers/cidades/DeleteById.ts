@@ -2,6 +2,7 @@ import * as yup from 'yup';
 import { validation } from '../../shared/middleware/Validation';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { CidadesProvider } from '../../database/providers/cidades';
 
 interface IParamsProps {
     id?: number
@@ -14,12 +15,19 @@ export const deleteByIdValidation = validation((getSchema) => ({
 }));
 
 export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
-    console.log(req.params);
-  
-    if(Number(req.params.id) === 999999) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    if(!req.params.id) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
             errors: {
-                default: 'Registro não encontrado'
+                default: 'O parametro "id" precisa ser informado!'
+            }
+        });
+    }
+
+    const result = await CidadesProvider.deleteById(req.params.id);
+    if (result instanceof Error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
             }
         });
     }
