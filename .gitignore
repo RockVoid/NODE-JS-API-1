@@ -2,4 +2,9 @@
 /coverage
 yarn-error.log
 .env
+<<<<<<< HEAD
+=======
+
+/coverage
+>>>>>>> develop
 *.sqlite
