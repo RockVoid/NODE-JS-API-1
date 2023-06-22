@@ -5,10 +5,10 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 interface IParamProps {
-    id: number
+    id?: number
 }
 
-export const getByIdaVlidation = validation((get) => ({
+export const getByIdValidation = validation((get) => ({
     params: get<IParamProps>(yup.object().shape({
         id: yup.number().integer().required().moreThan(0)
     }))
@@ -33,4 +33,6 @@ export const getById = async (req: Request<IParamProps>, res: Response) => {
             }
         });
     }
+
+    return res.status(StatusCodes.OK).json(result);
 };
